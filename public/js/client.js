@@ -716,7 +716,7 @@ let surveyURL = 'https://www.questionpro.com/t/AUs7VZq00L';
 
 // Redirect on leave room
 let redirectActive = false;
-let redirectURL = '/newcall';
+let redirectURL = 'https://www.havells.com';
 
 /**
  * Load all Html elements by Id
@@ -8498,7 +8498,7 @@ function handleRoomLocked() {
         showClass: { popup: 'animate__animated animate__fadeInDown' },
         hideClass: { popup: 'animate__animated animate__fadeOutUp' },
     }).then((result) => {
-        if (result.isConfirmed) openURL('/newcall');
+        if (result.isConfirmed) openURL('https://www.havells.com');
     });
 }
 
@@ -9835,7 +9835,7 @@ function handleKickedOut(config) {
         hideClass: { popup: 'animate__animated animate__fadeOutUp' },
     }).then(() => {
         checkRecording();
-        openURL('/newcall');
+        openURL('https://www.havells.com');
     });
 }
 
@@ -9925,7 +9925,7 @@ function leaveFeedback() {
 }
 
 function redirectOnLeave() {
-    redirectActive ? openURL(redirectURL) : openURL('/newcall');
+    redirectActive ? openURL(redirectURL) : openURL('https://www.havells.com');
 }
 
 /**
