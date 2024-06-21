@@ -272,7 +272,7 @@ const msgerEmojiBtn = getId('msgerEmojiBtn');
 const msgerShareFileBtn = getId('msgerShareFileBtn');
 const msgerVideoUrlBtn = getId('msgerVideoUrlBtn');
 const msgerInput = getId('msgerInput');
-const msgerCleanTextBtn = getId('msgerCleanTextBtn');
+// const msgerCleanTextBtn = getId('msgerCleanTextBtn');
 const msgerPasteBtn = getId('msgerPasteBtn');
 const msgerShowChatOnMsgDiv = getId('msgerShowChatOnMsgDiv');
 const msgerShowChatOnMsg = getId('msgerShowChatOnMsg');
@@ -762,7 +762,7 @@ function setButtonsToolTip() {
     //setTippy(msgerGPTBtn, 'ChatGPT', 'top');
     setTippy(msgerShareFileBtn, 'Share file', 'top');
     setTippy(msgerCPBtn, 'Private messages', 'top');
-    setTippy(msgerCleanTextBtn, 'Clean', 'top');
+    //setTippy(msgerCleanTextBtn, 'Clean', 'top');
     setTippy(msgerPasteBtn, 'Paste', 'top');
     setTippy(msgerSendBtn, 'Send', 'top');
     // Chat participants buttons
@@ -4435,9 +4435,9 @@ function setChatRoomBtn() {
     };
 
     // clean input msg txt
-    msgerCleanTextBtn.addEventListener('click', (e) => {
-        cleanMessageInput();
-    });
+    // msgerCleanTextBtn.addEventListener('click', (e) => {
+    //     cleanMessageInput();
+    // });
 
     // paste to input msg txt
     msgerPasteBtn.addEventListener('click', (e) => {
@@ -6931,7 +6931,7 @@ function hideChatRoomAndEmojiPicker() {
  */
 async function sendChatMessage() {
     if (!thereArePeerConnections()) {
-        cleanMessageInput();
+        // cleanMessageInput();
         isChatPasteTxt = false;
         return userLog('info', "Can't send message, no participants in the room");
     }
@@ -6940,14 +6940,14 @@ async function sendChatMessage() {
     const msg = checkMsg(msgerInput.value);
 
     // empty msg or
-    if (!msg) {
-        isChatPasteTxt = false;
-        return cleanMessageInput();
-    }
+    // if (!msg) {
+    //     isChatPasteTxt = false;
+    //     return cleanMessageInput();
+    // }
 
     emitMsg(myPeerName, 'toAll', msg, false, myPeerId);
     appendMessage(myPeerName, rightChatAvatar, 'right', msg, false);
-    cleanMessageInput();
+    // cleanMessageInput();
 }
 
 /**
@@ -6995,10 +6995,10 @@ function handleDataChannelChat(dataMessage) {
 /**
  * Clean input txt message
  */
-function cleanMessageInput() {
-    msgerInput.value = '';
-    msgerInput.style.height = '15px';
-}
+// function cleanMessageInput() {
+//     msgerInput.value = '';
+//     msgerInput.style.height = '15px';
+// }
 
 /**
  * Paste from clipboard to input txt message
