@@ -349,7 +349,7 @@ const dir = {
 };
 // html views
 const views = {
-    about: path.join(__dirname, '../../', 'public/views/about.html'),
+    //about: path.join(__dirname, '../../', 'public/views/about.html'),
     client: path.join(__dirname, '../../', 'public/views/client.html'),
     landing: path.join(__dirname, '../../', 'public/views/landing.html'),
     login: path.join(__dirname, '../../', 'public/views/login.html'),
@@ -507,9 +507,9 @@ app.get(['/stats'], (req, res) => {
 });
 
 // mirotalk about
-app.get(['/about'], (req, res) => {
-    res.sendFile(views.about);
-});
+// app.get(['/about'], (req, res) => {
+//     res.sendFile(views.about);
+// });
 
 // privacy policy
 app.get(['/privacy'], (req, res) => {
@@ -1070,7 +1070,7 @@ io.sockets.on('connect', async (socket) => {
             peer_video_status,
             peer_audio_status,
             peer_screen_status,
-            peer_hand_status,
+            //peer_hand_status,
             peer_rec_status,
             peer_privacy_status,
             peer_info,
@@ -1171,7 +1171,7 @@ io.sockets.on('connect', async (socket) => {
             peer_video_status: peer_video_status,
             peer_audio_status: peer_audio_status,
             peer_screen_status: peer_screen_status,
-            peer_hand_status: peer_hand_status,
+            //peer_hand_status: peer_hand_status,
             peer_rec_status: peer_rec_status,
             peer_privacy_status: peer_privacy_status,
             os: osName ? `${osName} ${osVersion}` : '',
@@ -1381,9 +1381,9 @@ io.sockets.on('connect', async (socket) => {
                         case 'screen':
                             peers[room_id][peer_id]['peer_screen_status'] = status;
                             break;
-                        case 'hand':
-                            peers[room_id][peer_id]['peer_hand_status'] = status;
-                            break;
+                        // case 'hand':
+                        //     peers[room_id][peer_id]['peer_hand_status'] = status;
+                        //     break;
                         case 'rec':
                             peers[room_id][peer_id]['peer_rec_status'] = status;
                             break;
@@ -1546,21 +1546,21 @@ io.sockets.on('connect', async (socket) => {
     /**
      * Whiteboard actions for all user in the same room
      */
-    socket.on('wbCanvasToJson', async (cfg) => {
-        // Prevent XSS injection
-        const config = checkXSS(cfg);
-        // log.debug('Whiteboard send canvas', config);
-        const { room_id } = config;
-        await sendToRoom(room_id, socket.id, 'wbCanvasToJson', config);
-    });
+    // socket.on('wbCanvasToJson', async (cfg) => {
+    //     // Prevent XSS injection
+    //     const config = checkXSS(cfg);
+    //     // log.debug('Whiteboard send canvas', config);
+    //     const { room_id } = config;
+    //     await sendToRoom(room_id, socket.id, 'wbCanvasToJson', config);
+    // });
 
-    socket.on('whiteboardAction', async (cfg) => {
-        // Prevent XSS injection
-        const config = checkXSS(cfg);
-        log.debug('Whiteboard', config);
-        const { room_id } = config;
-        await sendToRoom(room_id, socket.id, 'whiteboardAction', config);
-    });
+    // socket.on('whiteboardAction', async (cfg) => {
+    //     // Prevent XSS injection
+    //     const config = checkXSS(cfg);
+    //     log.debug('Whiteboard', config);
+    //     const { room_id } = config;
+    //     await sendToRoom(room_id, socket.id, 'whiteboardAction', config);
+    // });
 
     /**
      * Add peers to channel
