@@ -153,7 +153,7 @@ const buttons = {
         showRecordStreamBtn: true,
         showChatRoomBtn: true,
         //showCaptionRoomBtn: true,
-        showRoomEmojiPickerBtn: true,
+        //showRoomEmojiPickerBtn: true,
         //showMyHandBtn: true,
         // showWhiteboardBtn: true,
         showFileShareBtn: true,
@@ -240,7 +240,7 @@ const recordStreamBtn = getId('recordStreamBtn');
 //const fullScreenBtn = getId('fullScreenBtn');
 const chatRoomBtn = getId('chatRoomBtn');
 //const captionBtn = getId('captionBtn');
-const roomEmojiPickerBtn = getId('roomEmojiPickerBtn');
+//const roomEmojiPickerBtn = getId('roomEmojiPickerBtn');
 //const myHandBtn = getId('myHandBtn');
 // const whiteboardBtn = getId('whiteboardBtn');
 const fileShareBtn = getId('fileShareBtn');
@@ -250,10 +250,10 @@ const mySettingsBtn = getId('mySettingsBtn');
 const leaveRoomBtn = getId('leaveRoomBtn');
 
 // Room Emoji Picker
-const closeEmojiPickerContainer = getId('closeEmojiPickerContainer');
-const emojiPickerContainer = getId('emojiPickerContainer');
-const emojiPickerHeader = getId('emojiPickerHeader');
-const userEmoji = getId(`userEmoji`);
+// const closeEmojiPickerContainer = getId('closeEmojiPickerContainer');
+// const emojiPickerContainer = getId('emojiPickerContainer');
+// const emojiPickerHeader = getId('emojiPickerHeader');
+// const userEmoji = getId(`userEmoji`);
 
 // Chat room
 const msgerDraggable = getId('msgerDraggable');
@@ -266,7 +266,7 @@ const msgerClose = getId('msgerClose');
 const msgerMaxBtn = getId('msgerMaxBtn');
 const msgerMinBtn = getId('msgerMinBtn');
 const msgerChat = getId('msgerChat');
-const msgerEmojiBtn = getId('msgerEmojiBtn');
+//const msgerEmojiBtn = getId('msgerEmojiBtn');
 //const msgerMarkdownBtn = getId('msgerMarkdownBtn');
 //const msgerGPTBtn = getId('msgerGPTBtn');
 const msgerShareFileBtn = getId('msgerShareFileBtn');
@@ -280,57 +280,57 @@ const msgerSpeechMsgDiv = getId('msgerSpeechMsgDiv');
 const msgerSpeechMsg = getId('msgerSpeechMsg');
 const msgerSendBtn = getId('msgerSendBtn');
 
-const chatInputEmoji = {
-    '<3': '❤️',
-    '</3': '💔',
-    ':D': '😀',
-    ':)': '😃',
-    ';)': '😉',
-    ':(': '😒',
-    ':p': '😛',
-    ';p': '😜',
-    ":'(": '😢',
-    ':+1:': '👍',
-    ':*': '😘',
-    ':O': '😲',
-    ':|': '😐',
-    ':*(': '😭',
-    XD: '😆',
-    ':B': '😎',
-    ':P': '😜',
-    '<(': '👎',
-    '>:(': '😡',
-    ':S': '😟',
-    ':X': '🤐',
-    ';(': '😥',
-    ':T': '😖',
-    ':@': '😠',
-    ':$': '🤑',
-    ':&': '🤗',
-    ':#': '🤔',
-    ':!': '😵',
-    ':W': '😷',
-    ':%': '🤒',
-    ':*!': '🤩',
-    ':G': '😬',
-    ':R': '😋',
-    ':M': '🤮',
-    ':L': '🥴',
-    ':C': '🥺',
-    ':F': '🥳',
-    ':Z': '🤢',
-    ':^': '🤓',
-    ':K': '🤫',
-    ':D!': '🤯',
-    ':H': '🧐',
-    ':U': '🤥',
-    ':V': '🤪',
-    ':N': '🥶',
-    ':J': '🥴',
-}; // https://github.com/wooorm/gemoji/blob/main/support.md
+// const chatInputEmoji = {
+//     '<3': '❤️',
+//     '</3': '💔',
+//     ':D': '😀',
+//     ':)': '😃',
+//     ';)': '😉',
+//     ':(': '😒',
+//     ':p': '😛',
+//     ';p': '😜',
+//     ":'(": '😢',
+//     ':+1:': '👍',
+//     ':*': '😘',
+//     ':O': '😲',
+//     ':|': '😐',
+//     ':*(': '😭',
+//     XD: '😆',
+//     ':B': '😎',
+//     ':P': '😜',
+//     '<(': '👎',
+//     '>:(': '😡',
+//     ':S': '😟',
+//     ':X': '🤐',
+//     ';(': '😥',
+//     ':T': '😖',
+//     ':@': '😠',
+//     ':$': '🤑',
+//     ':&': '🤗',
+//     ':#': '🤔',
+//     ':!': '😵',
+//     ':W': '😷',
+//     ':%': '🤒',
+//     ':*!': '🤩',
+//     ':G': '😬',
+//     ':R': '😋',
+//     ':M': '🤮',
+//     ':L': '🥴',
+//     ':C': '🥺',
+//     ':F': '🥳',
+//     ':Z': '🤢',
+//     ':^': '🤓',
+//     ':K': '🤫',
+//     ':D!': '🤯',
+//     ':H': '🧐',
+//     ':U': '🤥',
+//     ':V': '🤪',
+//     ':N': '🥶',
+//     ':J': '🥴',
+// }; // https://github.com/wooorm/gemoji/blob/main/support.md
 
 // Chat room emoji picker
-const msgerEmojiPicker = getId('msgerEmojiPicker');
+// const msgerEmojiPicker = getId('msgerEmojiPicker');
 
 // Chat room connected peers
 const msgerCP = getId('msgerCP');
@@ -642,7 +642,7 @@ let chatMessagesId = 0;
 let showChatOnMessage = true;
 let isChatRoomVisible = false;
 //let isCaptionBoxVisible = false;
-let isChatEmojiVisible = false;
+//let isChatEmojiVisible = false;
 //let isChatMarkdownOn = false;
 //let isChatGPTOn = false;
 let isChatPasteTxt = false;
@@ -757,7 +757,7 @@ function setButtonsToolTip() {
     setTippy(msgerSaveBtn, 'Save the messages', 'bottom');
     setTippy(msgerMaxBtn, 'Maximize', 'bottom');
     setTippy(msgerMinBtn, 'Minimize', 'bottom');
-    setTippy(msgerEmojiBtn, 'Emoji', 'top');
+    //setTippy(msgerEmojiBtn, 'Emoji', 'top');
     //setTippy(msgerMarkdownBtn, 'Markdown', 'top');
     //setTippy(msgerGPTBtn, 'ChatGPT', 'top');
     setTippy(msgerShareFileBtn, 'Share file', 'top');
@@ -858,7 +858,7 @@ function refreshMainButtonsToolTipPlacement() {
     //setTippy(fullScreenBtn, 'View full screen', placement);
     setTippy(chatRoomBtn, 'Open the chat', placement);
     //setTippy(captionBtn, 'Open the caption', placement);
-    setTippy(roomEmojiPickerBtn, 'Send reaction', placement);
+    //setTippy(roomEmojiPickerBtn, 'Send reaction', placement);
     //setTippy(myHandBtn, 'Raise your hand', placement);
     //setTippy(whiteboardBtn, 'Open the whiteboard', placement);
     setTippy(fileShareBtn, 'Share file', placement);
@@ -1343,7 +1343,7 @@ function handleButtonsRule() {
     elemDisplay(recImage, buttons.main.showRecordStreamBtn);
     elemDisplay(chatRoomBtn, buttons.main.showChatRoomBtn);
     //elemDisplay(captionBtn, buttons.main.showCaptionRoomBtn && speechRecognition); // auto-detected
-    elemDisplay(roomEmojiPickerBtn, buttons.main.showRoomEmojiPickerBtn);
+    //elemDisplay(roomEmojiPickerBtn, buttons.main.showRoomEmojiPickerBtn);
     //elemDisplay(myHandBtn, buttons.main.showMyHandBtn);
     //elemDisplay(whiteboardBtn, buttons.main.showWhiteboardBtn);
     elemDisplay(fileShareBtn, buttons.main.showFileShareBtn);
@@ -4166,8 +4166,8 @@ function manageLeftButtons() {
     //setFullScreenBtn();
     setChatRoomBtn();
     //setCaptionRoomBtn();
-    setRoomEmojiButton();
-    setChatEmojiBtn();
+    // setRoomEmojiButton();
+    // setChatEmojiBtn();
     //setMyHandBtn();
     //setMyWhiteboardBtn();
     setMyFileShareBtn();
@@ -4327,7 +4327,7 @@ function setChatRoomBtn() {
         if (!isChatRoomVisible) {
             showChatRoomDraggable();
         } else {
-            hideChatRoomAndEmojiPicker();
+            hideChatRoom();
             e.target.className = className.chatOn;
         }
     });
@@ -4375,7 +4375,7 @@ function setChatRoomBtn() {
     // close chat room - show left button and status menu if hide
     msgerClose.addEventListener('click', (e) => {
         chatMinimize();
-        hideChatRoomAndEmojiPicker();
+        hideChatRoom();
         showButtonsBarAndMenu();
     });
 
@@ -4421,13 +4421,13 @@ function setChatRoomBtn() {
     });
 
     // on input check 4emoji from map
-    msgerInput.oninput = function () {
-        for (let i in chatInputEmoji) {
-            let regex = new RegExp(escapeSpecialChars(i), 'gim');
-            this.value = this.value.replace(regex, chatInputEmoji[i]);
-        }
-        checkLineBreaks();
-    };
+    // msgerInput.oninput = function () {
+    //     for (let i in chatInputEmoji) {
+    //         let regex = new RegExp(escapeSpecialChars(i), 'gim');
+    //         this.value = this.value.replace(regex, chatInputEmoji[i]);
+    //     }
+    //     checkLineBreaks();
+    // };
 
     msgerInput.onpaste = () => {
         isChatPasteTxt = true;
@@ -4558,79 +4558,79 @@ function setChatRoomBtn() {
 /**
  * Set room emoji reaction button
  */
-function setRoomEmojiButton() {
-    const pickerRoomOptions = {
-        theme: 'dark',
-        onEmojiSelect: sendEmojiToRoom,
-    };
+// function setRoomEmojiButton() {
+//     const pickerRoomOptions = {
+//         theme: 'dark',
+//         onEmojiSelect: sendEmojiToRoom,
+//     };
 
-    const emojiRoomPicker = new EmojiMart.Picker(pickerRoomOptions);
+//     const emojiRoomPicker = new EmojiMart.Picker(pickerRoomOptions);
 
-    emojiPickerContainer.appendChild(emojiRoomPicker);
-    elemDisplay(emojiPickerContainer, false);
+//     emojiPickerContainer.appendChild(emojiRoomPicker);
+//     elemDisplay(emojiPickerContainer, false);
 
-    if (!isMobileDevice) {
-        dragElement(emojiPickerContainer, emojiPickerHeader);
-    }
+//     if (!isMobileDevice) {
+//         dragElement(emojiPickerContainer, emojiPickerHeader);
+//     }
 
-    roomEmojiPickerBtn.addEventListener('click', (e) => {
-        toggleEmojiPicker();
-    });
-    closeEmojiPickerContainer.addEventListener('click', (e) => {
-        toggleEmojiPicker();
-    });
+//     roomEmojiPickerBtn.addEventListener('click', (e) => {
+//         toggleEmojiPicker();
+//     });
+//     closeEmojiPickerContainer.addEventListener('click', (e) => {
+//         toggleEmojiPicker();
+//     });
 
-    function sendEmojiToRoom(data) {
-        console.log('Selected Emoji:', data.native);
-        const message = {
-            type: 'roomEmoji',
-            room_id: roomId,
-            peer_name: myPeerName,
-            emoji: data.native,
-        };
-        if (thereArePeerConnections()) {
-            sendToServer('message', message);
-        }
-        handleEmoji(message);
-    }
+//     function sendEmojiToRoom(data) {
+//         console.log('Selected Emoji:', data.native);
+//         const message = {
+//             type: 'roomEmoji',
+//             room_id: roomId,
+//             peer_name: myPeerName,
+//             emoji: data.native,
+//         };
+//         if (thereArePeerConnections()) {
+//             sendToServer('message', message);
+//         }
+//         handleEmoji(message);
+//     }
 
-    function toggleEmojiPicker() {
-        if (emojiPickerContainer.style.display === 'block') {
-            elemDisplay(emojiPickerContainer, false);
-            setColor(roomEmojiPickerBtn, 'black');
-        } else {
-            emojiPickerContainer.style.display = 'block';
-            setColor(roomEmojiPickerBtn, 'green');
-        }
-    }
-}
+//     function toggleEmojiPicker() {
+//         if (emojiPickerContainer.style.display === 'block') {
+//             elemDisplay(emojiPickerContainer, false);
+//             setColor(roomEmojiPickerBtn, 'black');
+//         } else {
+//             emojiPickerContainer.style.display = 'block';
+//             setColor(roomEmojiPickerBtn, 'green');
+//         }
+//     }
+// }
 
 /**
  * Emoji picker chat room button click event
  */
-function setChatEmojiBtn() {
-    msgerEmojiBtn.addEventListener('click', (e) => {
-        // prevent refresh page
-        e.preventDefault();
-        hideShowEmojiPicker();
-    });
-    // Add emoji picker
-    const pickerOptions = {
-        theme: 'dark',
-        onEmojiSelect: addEmojiToMsg,
-    };
-    const emojiPicker = new EmojiMart.Picker(pickerOptions);
-    msgerEmojiPicker.appendChild(emojiPicker);
-}
+// function setChatEmojiBtn() {
+//     msgerEmojiBtn.addEventListener('click', (e) => {
+//         // prevent refresh page
+//         e.preventDefault();
+//         hideShowEmojiPicker();
+//     });
+//     // Add emoji picker
+//     const pickerOptions = {
+//         theme: 'dark',
+//         onEmojiSelect: addEmojiToMsg,
+//     };
+//     const emojiPicker = new EmojiMart.Picker(pickerOptions);
+//     msgerEmojiPicker.appendChild(emojiPicker);
+// }
 
 /**
  * Add emoji to chat message
  */
-function addEmojiToMsg(data) {
-    //console.log(data);
-    msgerInput.value += data.native;
-    hideShowEmojiPicker();
-}
+// function addEmojiToMsg(data) {
+//     //console.log(data);
+//     msgerInput.value += data.native;
+//     hideShowEmojiPicker();
+// }
 
 /**
  * Set my hand button click event
@@ -6906,13 +6906,13 @@ function cleanMessages() {
 /**
  * Hide chat room and emoji picker
  */
-function hideChatRoomAndEmojiPicker() {
+function hideChatRoom() {
     elemDisplay(msgerDraggable, false);
-    elemDisplay(msgerEmojiPicker, false);
-    setColor(msgerEmojiBtn, '#FFFFFF');
+    //elemDisplay(msgerEmojiPicker, false);
+    //setColor(msgerEmojiBtn, '#FFFFFF');
     chatRoomBtn.className = className.chatOn;
     isChatRoomVisible = false;
-    isChatEmojiVisible = false;
+    //isChatEmojiVisible = false;
     setTippy(chatRoomBtn, 'Open the chat', placement);
 }
 
@@ -7601,17 +7601,17 @@ function emitMsg(from, to, msg, privateMsg, id) {
 /**
  * Hide - Show emoji picker div
  */
-function hideShowEmojiPicker() {
-    if (!isChatEmojiVisible) {
-        elemDisplay(msgerEmojiPicker, true, 'block');
-        setColor(msgerEmojiBtn, '#FFFF00');
-        isChatEmojiVisible = true;
-        return;
-    }
-    elemDisplay(msgerEmojiPicker, false);
-    setColor(msgerEmojiBtn, '#FFFFFF');
-    isChatEmojiVisible = false;
-}
+// function hideShowEmojiPicker() {
+//     if (!isChatEmojiVisible) {
+//         elemDisplay(msgerEmojiPicker, true, 'block');
+//         setColor(msgerEmojiBtn, '#FFFF00');
+//         isChatEmojiVisible = true;
+//         return;
+//     }
+//     elemDisplay(msgerEmojiPicker, false);
+//     setColor(msgerEmojiBtn, '#FFFFFF');
+//     isChatEmojiVisible = false;
+// }
 
 /**
  * Download Chat messages in json format
@@ -8151,9 +8151,9 @@ function handleMessage(message) {
     console.log('Got message', message);
 
     switch (message.type) {
-        case 'roomEmoji':
-            handleEmoji(message);
-            break;
+        // case 'roomEmoji':
+        //     handleEmoji(message);
+        //     break;
         //....
         default:
             break;
@@ -8165,22 +8165,22 @@ function handleMessage(message) {
  * @param {object} message
  * @param {integer} duration time in ms
  */
-function handleEmoji(message, duration = 5000) {
-    if (userEmoji) {
-        const emojiDisplay = document.createElement('div');
-        emojiDisplay.className = 'animate__animated animate__backInUp';
-        emojiDisplay.style.padding = '10px';
-        emojiDisplay.style.fontSize = '3vh';
-        emojiDisplay.style.color = '#FFF';
-        emojiDisplay.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
-        emojiDisplay.style.borderRadius = '10px';
-        emojiDisplay.innerText = `${message.emoji} ${message.peer_name}`;
-        userEmoji.appendChild(emojiDisplay);
-        setTimeout(() => {
-            emojiDisplay.remove();
-        }, duration);
-    }
-}
+// function handleEmoji(message, duration = 5000) {
+//     if (userEmoji) {
+//         const emojiDisplay = document.createElement('div');
+//         emojiDisplay.className = 'animate__animated animate__backInUp';
+//         emojiDisplay.style.padding = '10px';
+//         emojiDisplay.style.fontSize = '3vh';
+//         emojiDisplay.style.color = '#FFF';
+//         emojiDisplay.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
+//         emojiDisplay.style.borderRadius = '10px';
+//         emojiDisplay.innerText = `${message.emoji} ${message.peer_name}`;
+//         userEmoji.appendChild(emojiDisplay);
+//         setTimeout(() => {
+//             emojiDisplay.remove();
+//         }, duration);
+//     }
+// }
 
 /**
  * Handle Screen Start
