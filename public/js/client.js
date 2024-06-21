@@ -6941,7 +6941,7 @@ function hideChatRoom() {
  */
 async function sendChatMessage() {
     if (!thereArePeerConnections()) {
-        // cleanMessageInput();
+        cleanMessageInput();
         isChatPasteTxt = false;
         return userLog('info', "Can't send message, no participants in the room");
     }
@@ -6950,14 +6950,14 @@ async function sendChatMessage() {
     const msg = checkMsg(msgerInput.value);
 
     // empty msg or
-    // if (!msg) {
-    //     isChatPasteTxt = false;
-    //     return cleanMessageInput();
-    // }
+    if (!msg) {
+        isChatPasteTxt = false;
+        return cleanMessageInput();
+    }
 
     emitMsg(myPeerName, 'toAll', msg, false, myPeerId);
     appendMessage(myPeerName, rightChatAvatar, 'right', msg, false);
-    // cleanMessageInput();
+    cleanMessageInput();
 }
 
 /**
@@ -7005,10 +7005,10 @@ function handleDataChannelChat(dataMessage) {
 /**
  * Clean input txt message
  */
-// function cleanMessageInput() {
-//     msgerInput.value = '';
-//     msgerInput.style.height = '15px';
-// }
+function cleanMessageInput() {
+    msgerInput.value = '';
+    msgerInput.style.height = '15px';
+}
 
 /**
  * Paste from clipboard to input txt message
