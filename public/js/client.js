@@ -9845,25 +9845,25 @@ function handleKickedOut(config) {
 //         html: `
 //         <br/>
 //         <div id="about">
-//             <button 
-//                 id="support-button" 
-//                 data-umami-event="Support button" 
-//                 class="pulsate" 
+//             <button
+//                 id="support-button"
+//                 data-umami-event="Support button"
+//                 class="pulsate"
 //                 onclick="window.open('https://codecanyon.net/user/miroslavpejic85')">
 //                 <i class="${className.heart}" ></i>&nbsp;Support
 //             </button>
 //             <br /><br /><br />
-//             Author:<a 
-//                 id="linkedin-button" 
-//                 data-umami-event="Linkedin button" 
-//                 href="https://www.linkedin.com/in/miroslav-pejic-976a07101/" target="_blank"> 
+//             Author:<a
+//                 id="linkedin-button"
+//                 data-umami-event="Linkedin button"
+//                 href="https://www.linkedin.com/in/miroslav-pejic-976a07101/" target="_blank">
 //                 Miroslav Pejic
 //             </a>
 //             <br /><br />
-//             Email:<a 
-//                 id="email-button" 
-//                 data-umami-event="Email button" 
-//                 href="mailto:miroslav.pejic.85@gmail.com?subject=MiroTalk P2P info"> 
+//             Email:<a
+//                 id="email-button"
+//                 data-umami-event="Email button"
+//                 href="mailto:miroslav.pejic.85@gmail.com?subject=MiroTalk P2P info">
 //                 miroslav.pejic.85@gmail.com
 //             </a>
 //             <br /><br />
