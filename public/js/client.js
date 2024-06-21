@@ -357,7 +357,7 @@ const mySettings = getId('mySettings');
 const mySettingsHeader = getId('mySettingsHeader');
 const tabVideoBtn = getId('tabVideoBtn');
 const tabAudioBtn = getId('tabAudioBtn');
-const tabVideoShareBtn = getId('tabVideoShareBtn');
+// const tabVideoShareBtn = getId('tabVideoShareBtn');
 const tabRecordingBtn = getId('tabRecordingBtn');
 const tabParticipantsBtn = getId('tabParticipantsBtn');
 const tabProfileBtn = getId('tabProfileBtn');
@@ -425,7 +425,7 @@ const micLatencyValue = getId('micLatencyValue');
 const micVolumeValue = getId('micVolumeValue');
 
 // Tab Media
-const shareMediaAudioVideoBtn = getId('shareMediaAudioVideoBtn');
+// const shareMediaAudioVideoBtn = getId('shareMediaAudioVideoBtn');
 
 // My whiteboard
 // const whiteboard = getId('whiteboard');
@@ -5032,9 +5032,9 @@ function setupMySettings() {
     tabAudioBtn.addEventListener('click', (e) => {
         openTab(e, 'tabAudio');
     });
-    tabVideoShareBtn.addEventListener('click', (e) => {
-        openTab(e, 'tabMedia');
-    });
+    // tabVideoShareBtn.addEventListener('click', (e) => {
+    //     openTab(e, 'tabMedia');
+    // });
     tabRecordingBtn.addEventListener('click', (e) => {
         openTab(e, 'tabRecording');
     });
@@ -5062,9 +5062,9 @@ function setupMySettings() {
         shareRoomByEmail();
     });
     // tab media
-    shareMediaAudioVideoBtn.addEventListener('click', (e) => {
-        sendVideoUrl();
-    });
+    // shareMediaAudioVideoBtn.addEventListener('click', (e) => {
+    //     sendVideoUrl();
+    // });
     // select audio input
     audioInputSelect.addEventListener('change', async () => {
         await changeLocalMicrophone(audioInputSelect.value);
