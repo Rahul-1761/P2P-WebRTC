@@ -164,7 +164,7 @@ const buttons = {
     chat: {
         showMaxBtn: true,
         showSaveMessageBtn: true,
-        showMarkDownBtn: true,
+        //showMarkDownBtn: true,
         showChatGPTBtn: true,
         showFileShareBtn: true,
         showShareVideoAudioBtn: true,
@@ -267,7 +267,7 @@ const msgerMaxBtn = getId('msgerMaxBtn');
 const msgerMinBtn = getId('msgerMinBtn');
 const msgerChat = getId('msgerChat');
 const msgerEmojiBtn = getId('msgerEmojiBtn');
-const msgerMarkdownBtn = getId('msgerMarkdownBtn');
+//const msgerMarkdownBtn = getId('msgerMarkdownBtn');
 const msgerGPTBtn = getId('msgerGPTBtn');
 const msgerShareFileBtn = getId('msgerShareFileBtn');
 const msgerVideoUrlBtn = getId('msgerVideoUrlBtn');
@@ -643,7 +643,7 @@ let showChatOnMessage = true;
 let isChatRoomVisible = false;
 //let isCaptionBoxVisible = false;
 let isChatEmojiVisible = false;
-let isChatMarkdownOn = false;
+//let isChatMarkdownOn = false;
 let isChatGPTOn = false;
 let isChatPasteTxt = false;
 let speechInMessages = false;
@@ -758,7 +758,7 @@ function setButtonsToolTip() {
     setTippy(msgerMaxBtn, 'Maximize', 'bottom');
     setTippy(msgerMinBtn, 'Minimize', 'bottom');
     setTippy(msgerEmojiBtn, 'Emoji', 'top');
-    setTippy(msgerMarkdownBtn, 'Markdown', 'top');
+    //setTippy(msgerMarkdownBtn, 'Markdown', 'top');
     setTippy(msgerGPTBtn, 'ChatGPT', 'top');
     setTippy(msgerShareFileBtn, 'Share file', 'top');
     setTippy(msgerCPBtn, 'Private messages', 'top');
@@ -1353,7 +1353,7 @@ function handleButtonsRule() {
     // chat
     elemDisplay(msgerMaxBtn, !isMobileDevice && buttons.chat.showMaxBtn);
     elemDisplay(msgerSaveBtn, buttons.chat.showSaveMessageBtn);
-    elemDisplay(msgerMarkdownBtn, buttons.chat.showMarkDownBtn);
+    //elemDisplay(msgerMarkdownBtn, buttons.chat.showMarkDownBtn);
     elemDisplay(msgerGPTBtn, buttons.chat.showChatGPTBtn);
     elemDisplay(msgerShareFileBtn, buttons.chat.showFileShareBtn);
     elemDisplay(msgerVideoUrlBtn, buttons.chat.showShareVideoAudioBtn);
@@ -4389,10 +4389,10 @@ function setChatRoomBtn() {
     });
 
     // Markdown on-off
-    msgerMarkdownBtn.addEventListener('click', (e) => {
-        isChatMarkdownOn = !isChatMarkdownOn;
-        setColor(msgerMarkdownBtn, isChatMarkdownOn ? 'lime' : 'white');
-    });
+    // msgerMarkdownBtn.addEventListener('click', (e) => {
+    //     isChatMarkdownOn = !isChatMarkdownOn;
+    //     setColor(msgerMarkdownBtn, isChatMarkdownOn ? 'lime' : 'white');
+    // });
 
     // ChatGPT/OpenAI
     msgerGPTBtn.addEventListener('click', (e) => {
@@ -7359,7 +7359,7 @@ function checkMsg(txt) {
         //if (isVideoTypeSupported(text)) return getIframe(text);
         return getLink(text);
     }
-    if (isChatMarkdownOn) return marked.parse(text);
+    // if (isChatMarkdownOn) return marked.parse(text);
     if (isChatPasteTxt && getLineBreaks(text) > 1) {
         isChatPasteTxt = false;
         return getPre(text);
