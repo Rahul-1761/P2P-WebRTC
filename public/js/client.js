@@ -77,7 +77,7 @@ const className = {
     kickOut: 'fas fa-sign-out-alt',
     chatOn: 'fas fa-comment',
     chatOff: 'fas fa-comment-slash',
-    ghost: 'fas fa-ghost',
+    // ghost: 'fas fa-ghost',
     undo: 'fas fa-undo',
     // captionOn: 'fas fa-closed-captioning',
     trash: 'fas fa-trash',
@@ -98,7 +98,7 @@ const icons = {
     fileSend: '<i class="fas fa-file-export"></i>',
     fileReceive: '<i class="fas fa-file-import"></i>',
     codecs: '<i class="fa-solid fa-film"></i>',
-    theme: '<i class="fas fa-fill-drip"></i>',
+    //theme: '<i class="fas fa-fill-drip"></i>',
 };
 
 // Whiteboard and fileSharing
@@ -260,7 +260,7 @@ const leaveRoomBtn = getId('leaveRoomBtn');
 // Chat room
 const msgerDraggable = getId('msgerDraggable');
 const msgerHeader = getId('msgerHeader');
-const msgerTheme = getId('msgerTheme');
+//const msgerTheme = getId('msgerTheme');
 const msgerCPBtn = getId('msgerCPBtn');
 const msgerClean = getId('msgerClean');
 const msgerSaveBtn = getId('msgerSaveBtn');
@@ -393,7 +393,7 @@ const pauseRecBtn = getId('pauseRecBtn');
 const resumeRecBtn = getId('resumeRecBtn');
 const recordingTime = getId('recordingTime');
 const lastRecordingInfo = getId('lastRecordingInfo');
-const themeSelect = getId('mirotalkTheme');
+//const themeSelect = getId('mirotalkTheme');
 const videoObjFitSelect = getId('videoObjFitSelect');
 const mainButtonsBar = getQsA('#buttonsBar button');
 const mainButtonsIcon = getQsA('#buttonsBar button i');
@@ -515,52 +515,52 @@ const ZOOM_IN_OUT_ENABLED = true; // Video Zoom in/out default (true)
 
 // Color Picker:
 
-const themeCustom = {
-    input: getId('themeColorPicker'),
-    check: getId('keepCustomTheme'),
-    color: lsSettings.theme_color ? lsSettings.theme_color : '#000000',
-    keep: lsSettings.theme_custom ? lsSettings.theme_custom : false,
-};
+// const themeCustom = {
+//     input: getId('themeColorPicker'),
+//     check: getId('keepCustomTheme'),
+//     color: lsSettings.theme_color ? lsSettings.theme_color : '#000000',
+//     keep: lsSettings.theme_custom ? lsSettings.theme_custom : false,
+// };
 
-const pickr = Pickr.create({
-    el: themeCustom.input,
-    theme: 'classic', // or 'monolith', or 'nano'
-    default: themeCustom.color,
-    useAsButton: true,
-    swatches: [
-        'rgba(244, 67, 54, 1)',
-        'rgba(233, 30, 99, 0.95)',
-        'rgba(156, 39, 176, 0.9)',
-        'rgba(103, 58, 183, 0.85)',
-        'rgba(63, 81, 181, 0.8)',
-        'rgba(33, 150, 243, 0.75)',
-        'rgba(3, 169, 244, 0.7)',
-        'rgba(0, 188, 212, 0.7)',
-        'rgba(0, 150, 136, 0.75)',
-        'rgba(76, 175, 80, 0.8)',
-        'rgba(139, 195, 74, 0.85)',
-        'rgba(205, 220, 57, 0.9)',
-        'rgba(255, 235, 59, 0.95)',
-        'rgba(255, 193, 7, 1)',
-    ],
-    components: {
-        preview: true,
-        opacity: true,
-        hue: true,
-    },
-})
-    .on('init', (pickr) => {
-        themeCustom.input.value = pickr.getSelectedColor().toHEXA().toString(0);
-    })
-    .on('change', (color) => {
-        themeCustom.color = color.toHEXA().toString();
-        themeCustom.input.value = themeCustom.color;
-        setCustomTheme();
-    })
-    .on('changestop', () => {
-        lsSettings.theme_color = themeCustom.color;
-        lS.setSettings(lsSettings);
-    });
+// const pickr = Pickr.create({
+//     el: themeCustom.input,
+//     theme: 'classic', // or 'monolith', or 'nano'
+//     default: themeCustom.color,
+//     useAsButton: true,
+//     swatches: [
+//         'rgba(244, 67, 54, 1)',
+//         'rgba(233, 30, 99, 0.95)',
+//         'rgba(156, 39, 176, 0.9)',
+//         'rgba(103, 58, 183, 0.85)',
+//         'rgba(63, 81, 181, 0.8)',
+//         'rgba(33, 150, 243, 0.75)',
+//         'rgba(3, 169, 244, 0.7)',
+//         'rgba(0, 188, 212, 0.7)',
+//         'rgba(0, 150, 136, 0.75)',
+//         'rgba(76, 175, 80, 0.8)',
+//         'rgba(139, 195, 74, 0.85)',
+//         'rgba(205, 220, 57, 0.9)',
+//         'rgba(255, 235, 59, 0.95)',
+//         'rgba(255, 193, 7, 1)',
+//     ],
+//     components: {
+//         preview: true,
+//         opacity: true,
+//         hue: true,
+//     },
+// })
+//     .on('init', (pickr) => {
+//         themeCustom.input.value = pickr.getSelectedColor().toHEXA().toString(0);
+//     })
+//     .on('change', (color) => {
+//         themeCustom.color = color.toHEXA().toString();
+//         themeCustom.input.value = themeCustom.color;
+//         setCustomTheme();
+//     })
+//     .on('changestop', () => {
+//         lsSettings.theme_color = themeCustom.color;
+//         lS.setSettings(lsSettings);
+//     });
 
 // misc
 let swBg = 'rgba(0, 0, 0, 0.7)'; // swAlert background color
@@ -754,7 +754,7 @@ function setButtonsToolTip() {
     setTippy(msgerClose, 'Close', 'bottom');
     setTippy(msgerShowChatOnMsgDiv, 'Show chat when you receive a new message', 'bottom');
     setTippy(msgerSpeechMsgDiv, 'Speech the incoming messages', 'bottom');
-    setTippy(msgerTheme, 'Ghost theme', 'bottom');
+    //setTippy(msgerTheme, 'Ghost theme', 'bottom');
     setTippy(msgerClean, 'Clean the messages', 'bottom');
     setTippy(msgerSaveBtn, 'Save the messages', 'bottom');
     setTippy(msgerMaxBtn, 'Maximize', 'bottom');
@@ -1093,7 +1093,7 @@ document.addEventListener('DOMContentLoaded', function () {
  * On body load Get started
  */
 function initClientPeer() {
-    setTheme();
+    // setTheme();
 
     if (!isWebRTCSupported) {
         return userLog('error', 'This browser seems not supported WebRTC!');
@@ -2387,141 +2387,141 @@ function handleRemovePeer(config) {
 /**
  * Set custom theme
  */
-function setCustomTheme() {
-    const color = themeCustom.color;
-    swBg = `radial-gradient(${color}, ${color})`;
-    setSP('--body-bg', `radial-gradient(${color}, ${color})`);
-    setSP('--msger-bg', `radial-gradient(${color}, ${color})`);
-    setSP('--msger-private-bg', `radial-gradient(${color}, ${color})`);
-    //setSP('--wb-bg', `radial-gradient(${color}, ${color})`);
-    setSP('--elem-border-color', '0.5px solid rgb(255 255 255 / 32%)');
-    setSP('--navbar-bg', 'rgba(0, 0, 0, 0.2)');
-    setSP('--select-bg', `${color}`);
-    setSP('--tab-btn-active', `${color}`);
-    setSP('--box-shadow', '0px 8px 16px 0px rgba(0, 0, 0, 0.2)');
-    setSP('--left-msg-bg', '#252d31');
-    setSP('--right-msg-bg', `${color}`);
-    setSP('--private-msg-bg', '#6b1226');
-    setSP('--btn-bar-bg-color', '#FFFFFF');
-    setSP('--btn-bar-color', '#000000');
-    document.body.style.background = `radial-gradient(${color}, ${color})`;
-}
+// function setCustomTheme() {
+//     const color = themeCustom.color;
+//     swBg = `radial-gradient(${color}, ${color})`;
+//     setSP('--body-bg', `radial-gradient(${color}, ${color})`);
+//     setSP('--msger-bg', `radial-gradient(${color}, ${color})`);
+//     setSP('--msger-private-bg', `radial-gradient(${color}, ${color})`);
+//     //setSP('--wb-bg', `radial-gradient(${color}, ${color})`);
+//     setSP('--elem-border-color', '0.5px solid rgb(255 255 255 / 32%)');
+//     setSP('--navbar-bg', 'rgba(0, 0, 0, 0.2)');
+//     setSP('--select-bg', `${color}`);
+//     setSP('--tab-btn-active', `${color}`);
+//     setSP('--box-shadow', '0px 8px 16px 0px rgba(0, 0, 0, 0.2)');
+//     setSP('--left-msg-bg', '#252d31');
+//     setSP('--right-msg-bg', `${color}`);
+//     setSP('--private-msg-bg', '#6b1226');
+//     setSP('--btn-bar-bg-color', '#FFFFFF');
+//     setSP('--btn-bar-color', '#000000');
+//     document.body.style.background = `radial-gradient(${color}, ${color})`;
+// }
 
 /**
  * Set mirotalk theme | dark | grey | ...
  */
-function setTheme() {
-    if (themeCustom.keep) return setCustomTheme();
+// function setTheme() {
+//     if (themeCustom.keep) return setCustomTheme();
 
-    mirotalkTheme.selectedIndex = lsSettings.theme;
-    const theme = mirotalkTheme.value;
-    switch (theme) {
-        case 'dark':
-            // dark theme
-            swBg = 'radial-gradient(#393939, #000000)';
-            setSP('--body-bg', 'radial-gradient(#393939, #000000)');
-            setSP('--msger-bg', 'radial-gradient(#393939, #000000)');
-            setSP('--msger-private-bg', 'radial-gradient(#393939, #000000)');
-            //setSP('--wb-bg', 'radial-gradient(#393939, #000000)');
-            setSP('--elem-border-color', 'none');
-            setSP('--navbar-bg', 'rgba(0, 0, 0, 0.2)');
-            setSP('--select-bg', '#2c2c2c');
-            setSP('--tab-btn-active', 'rgb(30 29 29)');
-            setSP('--box-shadow', '0px 8px 16px 0px rgba(0, 0, 0, 0.2)');
-            setSP('--left-msg-bg', '#252d31');
-            setSP('--right-msg-bg', '#056162');
-            setSP('--private-msg-bg', '#6b1226');
-            setSP('--btn-bar-bg-color', '#FFFFFF');
-            setSP('--btn-bar-color', '#000000');
-            document.body.style.background = 'radial-gradient(#393939, #000000)';
-            mirotalkTheme.selectedIndex = 0;
-            break;
-        case 'grey':
-            // grey theme
-            swBg = 'radial-gradient(#666, #333)';
-            setSP('--body-bg', 'radial-gradient(#666, #333)');
-            setSP('--msger-bg', 'radial-gradient(#666, #333)');
-            //setSP('--wb-bg', 'radial-gradient(#797979, #000)');
-            setSP('--elem-border-color', 'none');
-            setSP('--navbar-bg', 'rgba(0, 0, 0, 0.2)');
-            setSP('--select-bg', '#2c2c2c');
-            setSP('--tab-btn-active', 'rgb(30 29 29)');
-            setSP('--box-shadow', '0px 8px 16px 0px rgba(0, 0, 0, 0.2)');
-            setSP('--msger-private-bg', 'radial-gradient(#666, #333)');
-            setSP('--left-msg-bg', '#252d31');
-            setSP('--right-msg-bg', '#056162');
-            setSP('--private-msg-bg', '#6b1226');
-            setSP('--btn-bar-bg-color', '#FFFFFF');
-            setSP('--btn-bar-color', '#000000');
-            document.body.style.background = 'radial-gradient(#666, #333)';
-            mirotalkTheme.selectedIndex = 1;
-            break;
-        case 'green':
-            // green theme
-            swBg = 'radial-gradient(#003934, #001E1A)';
-            setSP('--body-bg', 'radial-gradient(#003934, #001E1A)');
-            setSP('--msger-bg', 'radial-gradient(#003934, #001E1A)');
-            //setSP('--wb-bg', 'radial-gradient(#003934, #001E1A)');
-            setSP('--elem-border-color', 'none');
-            setSP('--navbar-bg', 'rgba(0, 0, 0, 0.2)');
-            setSP('--select-bg', '#001E1A');
-            setSP('--tab-btn-active', '#003934');
-            setSP('--box-shadow', '0px 8px 16px 0px rgba(0, 0, 0, 0.2)');
-            setSP('--msger-private-bg', 'radial-gradient(#666, #333)');
-            setSP('--left-msg-bg', '#003934');
-            setSP('--right-msg-bg', '#001E1A');
-            setSP('--private-msg-bg', '#6b1226');
-            setSP('--btn-bar-bg-color', '#FFFFFF');
-            setSP('--btn-bar-color', '#000000');
-            document.body.style.background = 'radial-gradient(#003934, #001E1A)';
-            mirotalkTheme.selectedIndex = 2;
-            break;
-        case 'blue':
-            // blue theme
-            swBg = 'radial-gradient(#306bac, #141B41)';
-            setSP('--body-bg', 'radial-gradient(#306bac, #141B41)');
-            setSP('--msger-bg', 'radial-gradient(#306bac, #141B41)');
-            //setSP('--wb-bg', 'radial-gradient(#306bac, #141B41)');
-            setSP('--elem-border-color', 'none');
-            setSP('--navbar-bg', 'rgba(0, 0, 0, 0.2)');
-            setSP('--select-bg', '#141B41');
-            setSP('--tab-btn-active', '#306bac');
-            setSP('--box-shadow', '0px 8px 16px 0px rgba(0, 0, 0, 0.2)');
-            setSP('--msger-private-bg', 'radial-gradient(#666, #333)');
-            setSP('--left-msg-bg', '#306bac');
-            setSP('--right-msg-bg', '#141B41');
-            setSP('--private-msg-bg', '#6b1226');
-            setSP('--btn-bar-bg-color', '#FFFFFF');
-            setSP('--btn-bar-color', '#000000');
-            document.body.style.background = 'radial-gradient(#306bac, #141B41)';
-            mirotalkTheme.selectedIndex = 3;
-            break;
-        case 'red':
-            // red theme
-            swBg = 'radial-gradient(#69140E, #3C1518)';
-            setSP('--body-bg', 'radial-gradient(#69140E, #3C1518)');
-            setSP('--msger-bg', 'radial-gradient(#69140E, #3C1518)');
-            //setSP('--wb-bg', 'radial-gradient(#69140E, #3C1518)');
-            setSP('--navbar-bg', 'rgba(0, 0, 0, 0.2)');
-            setSP('--select-bg', '#3C1518');
-            setSP('--tab-btn-active', '#69140E');
-            setSP('--box-shadow', '0px 8px 16px 0px rgba(0, 0, 0, 0.2)');
-            setSP('--msger-private-bg', 'radial-gradient(#666, #333)');
-            setSP('--left-msg-bg', '#69140E');
-            setSP('--right-msg-bg', '#3C1518');
-            setSP('--private-msg-bg', '#6b1226');
-            setSP('--btn-bar-bg-color', '#FFFFFF');
-            setSP('--btn-bar-color', '#000000');
-            document.body.style.background = 'radial-gradient(#69140E, #3C1518)';
-            mirotalkTheme.selectedIndex = 4;
-            break;
-        // ...
-        default:
-            console.log('No theme found');
-            break;
-    }
-    //setButtonsBarPosition(mainButtonsBarPosition);
-}
+//     mirotalkTheme.selectedIndex = lsSettings.theme;
+//     const theme = mirotalkTheme.value;
+//     switch (theme) {
+//         case 'dark':
+//             // dark theme
+//             swBg = 'radial-gradient(#393939, #000000)';
+//             setSP('--body-bg', 'radial-gradient(#393939, #000000)');
+//             setSP('--msger-bg', 'radial-gradient(#393939, #000000)');
+//             setSP('--msger-private-bg', 'radial-gradient(#393939, #000000)');
+//             //setSP('--wb-bg', 'radial-gradient(#393939, #000000)');
+//             setSP('--elem-border-color', 'none');
+//             setSP('--navbar-bg', 'rgba(0, 0, 0, 0.2)');
+//             setSP('--select-bg', '#2c2c2c');
+//             setSP('--tab-btn-active', 'rgb(30 29 29)');
+//             setSP('--box-shadow', '0px 8px 16px 0px rgba(0, 0, 0, 0.2)');
+//             setSP('--left-msg-bg', '#252d31');
+//             setSP('--right-msg-bg', '#056162');
+//             setSP('--private-msg-bg', '#6b1226');
+//             setSP('--btn-bar-bg-color', '#FFFFFF');
+//             setSP('--btn-bar-color', '#000000');
+//             document.body.style.background = 'radial-gradient(#393939, #000000)';
+//             mirotalkTheme.selectedIndex = 0;
+//             break;
+//         case 'grey':
+//             // grey theme
+//             swBg = 'radial-gradient(#666, #333)';
+//             setSP('--body-bg', 'radial-gradient(#666, #333)');
+//             setSP('--msger-bg', 'radial-gradient(#666, #333)');
+//             //setSP('--wb-bg', 'radial-gradient(#797979, #000)');
+//             setSP('--elem-border-color', 'none');
+//             setSP('--navbar-bg', 'rgba(0, 0, 0, 0.2)');
+//             setSP('--select-bg', '#2c2c2c');
+//             setSP('--tab-btn-active', 'rgb(30 29 29)');
+//             setSP('--box-shadow', '0px 8px 16px 0px rgba(0, 0, 0, 0.2)');
+//             setSP('--msger-private-bg', 'radial-gradient(#666, #333)');
+//             setSP('--left-msg-bg', '#252d31');
+//             setSP('--right-msg-bg', '#056162');
+//             setSP('--private-msg-bg', '#6b1226');
+//             setSP('--btn-bar-bg-color', '#FFFFFF');
+//             setSP('--btn-bar-color', '#000000');
+//             document.body.style.background = 'radial-gradient(#666, #333)';
+//             mirotalkTheme.selectedIndex = 1;
+//             break;
+//         case 'green':
+//             // green theme
+//             swBg = 'radial-gradient(#003934, #001E1A)';
+//             setSP('--body-bg', 'radial-gradient(#003934, #001E1A)');
+//             setSP('--msger-bg', 'radial-gradient(#003934, #001E1A)');
+//             //setSP('--wb-bg', 'radial-gradient(#003934, #001E1A)');
+//             setSP('--elem-border-color', 'none');
+//             setSP('--navbar-bg', 'rgba(0, 0, 0, 0.2)');
+//             setSP('--select-bg', '#001E1A');
+//             setSP('--tab-btn-active', '#003934');
+//             setSP('--box-shadow', '0px 8px 16px 0px rgba(0, 0, 0, 0.2)');
+//             setSP('--msger-private-bg', 'radial-gradient(#666, #333)');
+//             setSP('--left-msg-bg', '#003934');
+//             setSP('--right-msg-bg', '#001E1A');
+//             setSP('--private-msg-bg', '#6b1226');
+//             setSP('--btn-bar-bg-color', '#FFFFFF');
+//             setSP('--btn-bar-color', '#000000');
+//             document.body.style.background = 'radial-gradient(#003934, #001E1A)';
+//             mirotalkTheme.selectedIndex = 2;
+//             break;
+//         case 'blue':
+//             // blue theme
+//             swBg = 'radial-gradient(#306bac, #141B41)';
+//             setSP('--body-bg', 'radial-gradient(#306bac, #141B41)');
+//             setSP('--msger-bg', 'radial-gradient(#306bac, #141B41)');
+//             //setSP('--wb-bg', 'radial-gradient(#306bac, #141B41)');
+//             setSP('--elem-border-color', 'none');
+//             setSP('--navbar-bg', 'rgba(0, 0, 0, 0.2)');
+//             setSP('--select-bg', '#141B41');
+//             setSP('--tab-btn-active', '#306bac');
+//             setSP('--box-shadow', '0px 8px 16px 0px rgba(0, 0, 0, 0.2)');
+//             setSP('--msger-private-bg', 'radial-gradient(#666, #333)');
+//             setSP('--left-msg-bg', '#306bac');
+//             setSP('--right-msg-bg', '#141B41');
+//             setSP('--private-msg-bg', '#6b1226');
+//             setSP('--btn-bar-bg-color', '#FFFFFF');
+//             setSP('--btn-bar-color', '#000000');
+//             document.body.style.background = 'radial-gradient(#306bac, #141B41)';
+//             mirotalkTheme.selectedIndex = 3;
+//             break;
+//         case 'red':
+//             // red theme
+//             swBg = 'radial-gradient(#69140E, #3C1518)';
+//             setSP('--body-bg', 'radial-gradient(#69140E, #3C1518)');
+//             setSP('--msger-bg', 'radial-gradient(#69140E, #3C1518)');
+//             //setSP('--wb-bg', 'radial-gradient(#69140E, #3C1518)');
+//             setSP('--navbar-bg', 'rgba(0, 0, 0, 0.2)');
+//             setSP('--select-bg', '#3C1518');
+//             setSP('--tab-btn-active', '#69140E');
+//             setSP('--box-shadow', '0px 8px 16px 0px rgba(0, 0, 0, 0.2)');
+//             setSP('--msger-private-bg', 'radial-gradient(#666, #333)');
+//             setSP('--left-msg-bg', '#69140E');
+//             setSP('--right-msg-bg', '#3C1518');
+//             setSP('--private-msg-bg', '#6b1226');
+//             setSP('--btn-bar-bg-color', '#FFFFFF');
+//             setSP('--btn-bar-color', '#000000');
+//             document.body.style.background = 'radial-gradient(#69140E, #3C1518)';
+//             mirotalkTheme.selectedIndex = 4;
+//             break;
+//         // ...
+//         default:
+//             console.log('No theme found');
+//             break;
+//     }
+//     //setButtonsBarPosition(mainButtonsBarPosition);
+// }
 
 /**
  * Set buttons bar position
@@ -4343,15 +4343,15 @@ function setChatRoomBtn() {
     });
 
     // ghost theme + undo
-    msgerTheme.addEventListener('click', (e) => {
-        if (e.target.className == className.ghost) {
-            e.target.className = className.undo;
-            setSP('--msger-bg', 'rgba(0, 0, 0, 0.100)');
-        } else {
-            e.target.className = className.ghost;
-            setTheme();
-        }
-    });
+    // msgerTheme.addEventListener('click', (e) => {
+    //     if (e.target.className == className.ghost) {
+    //         e.target.className = className.undo;
+    //         setSP('--msger-bg', 'rgba(0, 0, 0, 0.100)');
+    //     } else {
+    //         e.target.className = className.ghost;
+    //         setTheme();
+    //     }
+    // });
 
     // show msger participants section
     msgerCPBtn.addEventListener('click', (e) => {
@@ -4970,17 +4970,17 @@ function setMySettingsBtn() {
         resumeRecording();
     });
     // Styles
-    themeCustom.check.onchange = (e) => {
-        themeCustom.keep = e.currentTarget.checked;
-        themeSelect.disabled = themeCustom.keep;
-        lsSettings.theme_custom = themeCustom.keep;
-        lsSettings.theme_color = themeCustom.color;
-        lS.setSettings(lsSettings);
-        setTheme();
-        userLog('toast', `${icons.theme} Custom theme keep ` + (themeCustom.keep ? 'ON' : 'OFF'));
-        playSound('switch');
-        e.target.blur();
-    };
+    // themeCustom.check.onchange = (e) => {
+    //     themeCustom.keep = e.currentTarget.checked;
+    //     themeSelect.disabled = themeCustom.keep;
+    //     lsSettings.theme_custom = themeCustom.keep;
+    //     lsSettings.theme_color = themeCustom.color;
+    //     lS.setSettings(lsSettings);
+    //     setTheme();
+    //     userLog('toast', `${icons.theme} Custom theme keep ` + (themeCustom.keep ? 'ON' : 'OFF'));
+    //     playSound('switch');
+    //     e.target.blur();
+    // };
 }
 
 /**
@@ -5161,11 +5161,11 @@ function setupMySettings() {
         screenFpsSelect.disabled = true;
     }
     // select themes
-    themeSelect.addEventListener('change', (e) => {
-        lsSettings.theme = themeSelect.selectedIndex;
-        lS.setSettings(lsSettings);
-        setTheme();
-    });
+    // themeSelect.addEventListener('change', (e) => {
+    //     lsSettings.theme = themeSelect.selectedIndex;
+    //     lS.setSettings(lsSettings);
+    //     setTheme();
+    // });
     // video object fit
     videoObjFitSelect.addEventListener('change', (e) => {
         lsSettings.video_obj_fit = videoObjFitSelect.selectedIndex;
@@ -5234,9 +5234,9 @@ function loadSettingsFromLocalStorage() {
     switchAudioPitchBar.checked = isAudioPitchBar;
     switchH264Recording.checked = recPrioritizeH264;
 
-    themeCustom.check.checked = themeCustom.keep;
-    themeSelect.disabled = themeCustom.keep;
-    themeCustom.input.value = themeCustom.color;
+    // themeCustom.check.checked = themeCustom.keep;
+    // themeSelect.disabled = themeCustom.keep;
+    // themeCustom.input.value = themeCustom.color;
 
     switchAutoGainControl.checked = lsSettings.mic_auto_gain_control;
     switchEchoCancellation.checked = lsSettings.mic_echo_cancellations;
