@@ -165,7 +165,7 @@ const buttons = {
         showMaxBtn: true,
         showSaveMessageBtn: true,
         //showMarkDownBtn: true,
-        showChatGPTBtn: true,
+        //showChatGPTBtn: true,
         showFileShareBtn: true,
         showShareVideoAudioBtn: true,
         showParticipantsBtn: true,
@@ -268,7 +268,7 @@ const msgerMinBtn = getId('msgerMinBtn');
 const msgerChat = getId('msgerChat');
 const msgerEmojiBtn = getId('msgerEmojiBtn');
 //const msgerMarkdownBtn = getId('msgerMarkdownBtn');
-const msgerGPTBtn = getId('msgerGPTBtn');
+//const msgerGPTBtn = getId('msgerGPTBtn');
 const msgerShareFileBtn = getId('msgerShareFileBtn');
 const msgerVideoUrlBtn = getId('msgerVideoUrlBtn');
 const msgerInput = getId('msgerInput');
@@ -644,13 +644,13 @@ let isChatRoomVisible = false;
 //let isCaptionBoxVisible = false;
 let isChatEmojiVisible = false;
 //let isChatMarkdownOn = false;
-let isChatGPTOn = false;
+//let isChatGPTOn = false;
 let isChatPasteTxt = false;
 let speechInMessages = false;
 let isSpeechSynthesisSupported = 'speechSynthesis' in window;
 let transcripts = []; // collect all the transcripts to save it later if you need
 let chatMessages = []; // collect chat messages to save it later if want
-let chatGPTcontext = []; // keep chatGPT messages context
+//let chatGPTcontext = []; // keep chatGPT messages context
 
 // settings
 let videoMaxFrameRate = 30;
@@ -759,7 +759,7 @@ function setButtonsToolTip() {
     setTippy(msgerMinBtn, 'Minimize', 'bottom');
     setTippy(msgerEmojiBtn, 'Emoji', 'top');
     //setTippy(msgerMarkdownBtn, 'Markdown', 'top');
-    setTippy(msgerGPTBtn, 'ChatGPT', 'top');
+    //setTippy(msgerGPTBtn, 'ChatGPT', 'top');
     setTippy(msgerShareFileBtn, 'Share file', 'top');
     setTippy(msgerCPBtn, 'Private messages', 'top');
     setTippy(msgerCleanTextBtn, 'Clean', 'top');
@@ -1354,7 +1354,7 @@ function handleButtonsRule() {
     elemDisplay(msgerMaxBtn, !isMobileDevice && buttons.chat.showMaxBtn);
     elemDisplay(msgerSaveBtn, buttons.chat.showSaveMessageBtn);
     //elemDisplay(msgerMarkdownBtn, buttons.chat.showMarkDownBtn);
-    elemDisplay(msgerGPTBtn, buttons.chat.showChatGPTBtn);
+    //elemDisplay(msgerGPTBtn, buttons.chat.showChatGPTBtn);
     elemDisplay(msgerShareFileBtn, buttons.chat.showFileShareBtn);
     elemDisplay(msgerVideoUrlBtn, buttons.chat.showShareVideoAudioBtn);
     elemDisplay(msgerCPBtn, buttons.chat.showParticipantsBtn);
@@ -4395,10 +4395,10 @@ function setChatRoomBtn() {
     // });
 
     // ChatGPT/OpenAI
-    msgerGPTBtn.addEventListener('click', (e) => {
-        isChatGPTOn = !isChatGPTOn;
-        setColor(msgerGPTBtn, isChatGPTOn ? 'lime' : 'white');
-    });
+    // msgerGPTBtn.addEventListener('click', (e) => {
+    //     isChatGPTOn = !isChatGPTOn;
+    //     setColor(msgerGPTBtn, isChatGPTOn ? 'lime' : 'white');
+    // });
 
     // share file from chat
     msgerShareFileBtn.addEventListener('click', (e) => {
@@ -6867,7 +6867,7 @@ function cleanMessages() {
             // clean chat messages
             chatMessages = [];
             // clean chatGPT context
-            chatGPTcontext = [];
+            // chatGPTcontext = [];
             playSound('delete');
         }
     });
@@ -6930,7 +6930,7 @@ function hideChatRoomAndEmojiPicker() {
  * Send Chat messages to peers in the room
  */
 async function sendChatMessage() {
-    if (!thereArePeerConnections() && !isChatGPTOn) {
+    if (!thereArePeerConnections()) {
         cleanMessageInput();
         isChatPasteTxt = false;
         return userLog('info', "Can't send message, no participants in the room");
@@ -6945,7 +6945,7 @@ async function sendChatMessage() {
         return cleanMessageInput();
     }
 
-    isChatGPTOn ? await getChatGPTmessage(msg) : emitMsg(myPeerName, 'toAll', msg, false, myPeerId);
+    emitMsg(myPeerName, 'toAll', msg, false, myPeerId);
     appendMessage(myPeerName, rightChatAvatar, 'right', msg, false);
     cleanMessageInput();
 }
@@ -7104,7 +7104,7 @@ function appendMessage(from, img, side, msg, privateMsg, msgId = null) {
 
     const isValidPrivateMessage = getPrivateMsg && getMsgId != null && getMsgId != myPeerId;
 
-    const message = getFrom === 'ChatGPT' ? `<pre>${getMsg}</pre>` : getMsg;
+    const message = getMsg;
 
     let msgHTML = `
 	<div id="msg-${chatMessagesId}" class="msg ${getSide}-msg">
@@ -7568,35 +7568,35 @@ function emitMsg(from, to, msg, privateMsg, id) {
  * https://platform.openai.com/docs/introduction
  * @param {string} msg
  */
-async function getChatGPTmessage(msg) {
-    console.log('Send ChatGPT message:', msg);
-    signalingSocket
-        .request('data', {
-            room_id: roomId,
-            peer_id: myPeerId,
-            peer_name: myPeerName,
-            method: 'getChatGPT',
-            params: {
-                time: getDataTimeString(),
-                prompt: msg,
-                context: chatGPTcontext,
-            },
-        })
-        .then(
-            function (completion) {
-                if (!completion) return;
-                const { message, context } = completion;
-                chatGPTcontext = context ? context : [];
-                setPeerChatAvatarImgName('left', 'ChatGPT');
-                appendMessage('ChatGPT', leftChatAvatar, 'left', message, true);
-                cleanMessageInput();
-                speechInMessages ? speechMessage(true, 'ChatGPT', message) : playSound('message');
-            }.bind(this),
-        )
-        .catch((err) => {
-            console.log('ChatGPT error:', err);
-        });
-}
+// async function getChatGPTmessage(msg) {
+//     console.log('Send ChatGPT message:', msg);
+//     signalingSocket
+//         .request('data', {
+//             room_id: roomId,
+//             peer_id: myPeerId,
+//             peer_name: myPeerName,
+//             method: 'getChatGPT',
+//             params: {
+//                 time: getDataTimeString(),
+//                 prompt: msg,
+//                 context: chatGPTcontext,
+//             },
+//         })
+//         .then(
+//             function (completion) {
+//                 if (!completion) return;
+//                 const { message, context } = completion;
+//                 chatGPTcontext = context ? context : [];
+//                 setPeerChatAvatarImgName('left', 'ChatGPT');
+//                 appendMessage('ChatGPT', leftChatAvatar, 'left', message, true);
+//                 cleanMessageInput();
+//                 speechInMessages ? speechMessage(true, 'ChatGPT', message) : playSound('message');
+//             }.bind(this),
+//         )
+//         .catch((err) => {
+//             console.log('ChatGPT error:', err);
+//         });
+// }
 
 /**
  * Hide - Show emoji picker div

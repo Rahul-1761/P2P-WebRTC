@@ -253,27 +253,27 @@ if (sentryEnabled) {
 }
 
 // OpenAI/ChatGPT
-let chatGPT;
-const configChatGPT = {
-    enabled: getEnvBoolean(process.env.CHATGPT_ENABLED),
-    basePath: process.env.CHATGPT_BASE_PATH,
-    apiKey: process.env.CHATGPT_APIKEY,
-    model: process.env.CHATGPT_MODEL,
-    max_tokens: parseInt(process.env.CHATGPT_MAX_TOKENS),
-    temperature: parseInt(process.env.CHATGPT_TEMPERATURE),
-};
-if (configChatGPT.enabled) {
-    if (configChatGPT.apiKey) {
-        const { OpenAI } = require('openai');
-        const configuration = {
-            basePath: configChatGPT.basePath,
-            apiKey: configChatGPT.apiKey,
-        };
-        chatGPT = new OpenAI(configuration);
-    } else {
-        log.warning('ChatGPT seems enabled, but you missing the apiKey!');
-    }
-}
+// let chatGPT;
+// const configChatGPT = {
+//     enabled: getEnvBoolean(process.env.CHATGPT_ENABLED),
+//     basePath: process.env.CHATGPT_BASE_PATH,
+//     apiKey: process.env.CHATGPT_APIKEY,
+//     model: process.env.CHATGPT_MODEL,
+//     max_tokens: parseInt(process.env.CHATGPT_MAX_TOKENS),
+//     temperature: parseInt(process.env.CHATGPT_TEMPERATURE),
+// };
+// if (configChatGPT.enabled) {
+//     if (configChatGPT.apiKey) {
+//         const { OpenAI } = require('openai');
+//         const configuration = {
+//             basePath: configChatGPT.basePath,
+//             apiKey: configChatGPT.apiKey,
+//         };
+//         chatGPT = new OpenAI(configuration);
+//     } else {
+//         log.warning('ChatGPT seems enabled, but you missing the apiKey!');
+//     }
+// }
 
 // IP Whitelist
 const ipWhitelist = {
@@ -868,7 +868,7 @@ function getServerConfig(tunnel = false) {
         use_self_signed_certificate: isHttps,
         turn_enabled: turnServerEnabled,
         ip_lookup_enabled: IPLookupEnabled,
-        chatGPT_enabled: configChatGPT.enabled,
+        //chatGPT_enabled: configChatGPT.enabled,
         slack_enabled: slackEnabled,
         sentry_enabled: sentryEnabled,
         survey_enabled: surveyEnabled,
@@ -988,51 +988,51 @@ io.sockets.on('connect', async (socket) => {
                     }
                 }
                 break;
-            case 'getChatGPT':
-                // https://platform.openai.com/docs/introduction
-                if (!configChatGPT.enabled) return cb({ message: 'ChatGPT seems disabled, try later!' });
-                // https://platform.openai.com/docs/api-reference/completions/create
-                try {
-                    const { time, prompt, context } = params;
-                    // Add the prompt to the context
-                    context.push({ role: 'user', content: prompt });
-                    // Call OpenAI's API to generate response
-                    const completion = await chatGPT.chat.completions.create({
-                        model: configChatGPT.model || 'gpt-3.5-turbo',
-                        messages: context,
-                        max_tokens: configChatGPT.max_tokens || 1000,
-                        temperature: configChatGPT.temperature || 0,
-                    });
-                    // Extract message from completion
-                    const message = completion.choices[0].message.content.trim();
-                    // Add response to context
-                    context.push({ role: 'assistant', content: message });
-                    // Log conversation details
-                    log.info('ChatGPT', {
-                        time: time,
-                        room: room_id,
-                        name: peer_name,
-                        context: context,
-                    });
-                    // Callback response to client
-                    cb({ message: message, context: context });
-                } catch (error) {
-                    if (error.name === 'APIError') {
-                        log.error('ChatGPT', {
-                            name: error.name,
-                            status: error.status,
-                            message: error.message,
-                            code: error.code,
-                            type: error.type,
-                        });
-                        cb({ message: error.message });
-                    } else {
-                        // Non-API error
-                        log.error('ChatGPT', error);
-                        cb({ message: error.message });
-                    }
-                }
-                break;
+            // case 'getChatGPT':
+            //     // https://platform.openai.com/docs/introduction
+            //     if (!configChatGPT.enabled) return cb({ message: 'ChatGPT seems disabled, try later!' });
+            //     // https://platform.openai.com/docs/api-reference/completions/create
+            //     try {
+            //         const { time, prompt, context } = params;
+            //         // Add the prompt to the context
+            //         context.push({ role: 'user', content: prompt });
+            //         // Call OpenAI's API to generate response
+            //         const completion = await chatGPT.chat.completions.create({
+            //             model: configChatGPT.model || 'gpt-3.5-turbo',
+            //             messages: context,
+            //             max_tokens: configChatGPT.max_tokens || 1000,
+            //             temperature: configChatGPT.temperature || 0,
+            //         });
+            //         // Extract message from completion
+            //         const message = completion.choices[0].message.content.trim();
+            //         // Add response to context
+            //         context.push({ role: 'assistant', content: message });
+            //         // Log conversation details
+            //         log.info('ChatGPT', {
+            //             time: time,
+            //             room: room_id,
+            //             name: peer_name,
+            //             context: context,
+            //         });
+            //         // Callback response to client
+            //         cb({ message: message, context: context });
+            //     } catch (error) {
+            //         if (error.name === 'APIError') {
+            //             log.error('ChatGPT', {
+            //                 name: error.name,
+            //                 status: error.status,
+            //                 message: error.message,
+            //                 code: error.code,
+            //                 type: error.type,
+            //             });
+            //             cb({ message: error.message });
+            //         } else {
+            //             // Non-API error
+            //             log.error('ChatGPT', error);
+            //             cb({ message: error.message });
+            //         }
+            //     }
+            //     break;
             //....
             default:
                 cb(false);
