@@ -184,6 +184,8 @@ const buttons = {
         showEjectEveryoneBtn: true,
         showLockRoomBtn: true,
         showUnlockRoomBtn: true,
+        showRecordingbtn: true,
+        showNetworkbtn: true,
     },
     remote: {
         showAudioVolume: true,
@@ -1303,10 +1305,13 @@ function handleRules(isPresenter) {
     console.log('14. Peer isPresenter: ' + isPresenter + ' Reconnected to signaling server: ' + isPeerReconnected);
     if (!isPresenter) {
         //buttons.main.showShareRoomBtn = false;
+        buttons.main.showRecordStreamBtn = false;
         buttons.settings.showMicOptionsBtn = false;
         buttons.settings.showTabRoomParticipants = false;
         buttons.settings.showTabRoomSecurity = false;
         buttons.settings.showTabEmailInvitation = false;
+        buttons.settings.showRecordingbtn = false;
+        buttons.settings.showNetworkbtn = false;
         // buttons.remote.audioBtnClickAllowed = false;
         // buttons.remote.videoBtnClickAllowed = false;
         buttons.remote.showKickOutBtn = false;
@@ -1314,12 +1319,15 @@ function handleRules(isPresenter) {
         //...
     } else {
         buttons.main.showShareRoomBtn = true;
+        buttons.main.showRecordStreamBtn = true;
         buttons.settings.showMicOptionsBtn = true;
         buttons.settings.showTabRoomParticipants = true;
         buttons.settings.showTabRoomSecurity = true;
         buttons.settings.showTabEmailInvitation = true;
+        buttons.settings.showNetworkbtn = true;
         buttons.settings.showLockRoomBtn = !isRoomLocked;
         buttons.settings.showUnlockRoomBtn = isRoomLocked;
+        buttons.settings.showRecordingbtn = true;
         buttons.remote.audioBtnClickAllowed = true;
         buttons.remote.videoBtnClickAllowed = true;
         buttons.remote.showKickOutBtn = true;
@@ -1371,6 +1379,8 @@ function handleButtonsRule() {
     elemDisplay(tabRoomParticipants, buttons.settings.showTabRoomParticipants);
     elemDisplay(tabRoomSecurity, buttons.settings.showTabRoomSecurity);
     elemDisplay(tabEmailInvitation, buttons.settings.showTabEmailInvitation);
+    elemDisplay(tabRecordingBtn, buttons.settings.showRecordingbtn);
+    elemDisplay(tabNetworkBtn, buttons.settings.showNetworkbtn);
     // Whiteboard
     // buttons.whiteboard.whiteboardLockBtn
     //     ? elemDisplay(whiteboardLockBtn, true)
