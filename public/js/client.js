@@ -5373,13 +5373,13 @@ async function getVideoConstraints(videoQuality) {
                 }; // on default as hdVideo
             }
             break;
-        case 'qvgaVideo':
-            constraints = {
-                width: { exact: 320 },
-                height: { exact: 240 },
-                frameRate: frameRate,
-            }; // video cam constraints low bandwidth
-            break;
+        // case 'qvgaVideo':
+        //     constraints = {
+        //         width: { exact: 320 },
+        //         height: { exact: 240 },
+        //         frameRate: frameRate,
+        //     }; // video cam constraints low bandwidth
+        //     break;
         case 'vgaVideo':
             constraints = {
                 width: { exact: 640 },
@@ -5401,20 +5401,20 @@ async function getVideoConstraints(videoQuality) {
                 frameRate: frameRate,
             }; // video cam constraints very high bandwidth
             break;
-        case '2kVideo':
-            constraints = {
-                width: { exact: 2560 },
-                height: { exact: 1440 },
-                frameRate: frameRate,
-            }; // video cam constraints ultra high bandwidth
-            break;
-        case '4kVideo':
-            constraints = {
-                width: { exact: 3840 },
-                height: { exact: 2160 },
-                frameRate: frameRate,
-            }; // video cam constraints ultra high bandwidth
-            break;
+        // case '2kVideo':
+        //     constraints = {
+        //         width: { exact: 2560 },
+        //         height: { exact: 1440 },
+        //         frameRate: frameRate,
+        //     }; // video cam constraints ultra high bandwidth
+        //     break;
+        // case '4kVideo':
+        //     constraints = {
+        //         width: { exact: 3840 },
+        //         height: { exact: 2160 },
+        //         frameRate: frameRate,
+        //     }; // video cam constraints ultra high bandwidth
+        //     break;
         default:
             break;
     }
