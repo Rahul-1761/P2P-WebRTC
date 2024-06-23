@@ -948,7 +948,7 @@ function getRoomId() {
     if (myRoomId) myRoomId.innerText = roomId;
 
     // Save room name in local storage
-    window.localStorage.lastRoom = roomId;
+    // window.localStorage.lastRoom = roomId;
     return roomId;
 }
 

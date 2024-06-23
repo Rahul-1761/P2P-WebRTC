@@ -353,7 +353,7 @@ const views = {
     client: path.join(__dirname, '../../', 'public/views/client.html'),
     landing: path.join(__dirname, '../../', 'public/views/landing.html'),
     login: path.join(__dirname, '../../', 'public/views/login.html'),
-    // newCall: path.join(__dirname, '../../', 'public/views/newcall.html'),
+    newCall: path.join(__dirname, '../../', 'public/views/newcall.html'),
     notFound: path.join(__dirname, '../../', 'public/views/404.html'),
     privacy: path.join(__dirname, '../../', 'public/views/privacy.html'),
     stunTurn: path.join(__dirname, '../../', 'public/views/testStunTurn.html'),
@@ -485,20 +485,20 @@ app.get(['/'], OIDCAuth, (req, res) => {
 });
 
 // set new room name and join
-// app.get(['/newcall'], OIDCAuth, (req, res) => {
-//     if ((!OIDC.enabled && hostCfg.protected && !hostCfg.authenticated) || authHost.isRoomActive()) {
-//         const ip = getIP(req);
-//         if (allowedIP(ip)) {
-//             res.sendFile(views.newCall);
-//             hostCfg.authenticated = true;
-//         } else {
-//             hostCfg.authenticated = false;
-//             res.sendFile(views.login);
-//         }
-//     } else {
-//         res.sendFile(views.newCall);
-//     }
-// });
+app.get(['/newcall'], OIDCAuth, (req, res) => {
+    if ((!OIDC.enabled && hostCfg.protected && !hostCfg.authenticated) || authHost.isRoomActive()) {
+        const ip = getIP(req);
+        if (allowedIP(ip)) {
+            res.sendFile(views.newCall);
+            hostCfg.authenticated = true;
+        } else {
+            hostCfg.authenticated = false;
+            res.sendFile(views.login);
+        }
+    } else {
+        res.sendFile(views.newCall);
+    }
+});
 
 // Get stats endpoint
 app.get(['/stats'], (req, res) => {
