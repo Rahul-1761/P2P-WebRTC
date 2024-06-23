@@ -161,7 +161,47 @@
 //     }
 // }
 
-const roomName = document.getElementById('roomName');
+document.addEventListener('DOMContentLoaded', function(){
+    const roomName = document.getElementById('roomName');
+    const phoneInput = window.intlTelInput(roomName, {
+        initialCountry: "in", // Set default country to India
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        autoPlaceholder: "aggressive", // Show placeholder based on country format
+    });
+
+    // Update placeholder on country change
+    roomName.addEventListener('countrychange', function() {
+        const placeholder = phoneInput.getPlaceholder();
+        roomName.placeholder = placeholder;
+    });
+
+    const joinRoomButton = document.getElementById('joinRoomButton');
+
+    if (joinRoomButton) {
+        joinRoomButton.onclick = (e) => {
+            e.preventDefault();
+            joinRoom();
+        };
+    }
+
+    roomName.onkeyup = (e) => {
+        if (e.keyCode === 13) {
+            e.preventDefault();
+            joinRoom();
+        }
+    };
+
+    function joinRoom() {
+        const roomName = filterXSS(phoneInput.getNumber());
+        if (roomName) {
+            window.location.href = '/join/' + roomName;
+            // window.localStorage.lastRoom = roomName;
+        } else {
+            alert('Phone Number / Room name empty!\nPlease enter a Valid Phone Number / Room name.');
+        }
+    }
+})
+
 // if (roomName) {
 //     roomName.value = '';
 //     // typeWriter();
@@ -181,7 +221,7 @@ const roomName = document.getElementById('roomName');
 // }
 
 // const genRoomButton = document.getElementById('genRoomButton');
-const joinRoomButton = document.getElementById('joinRoomButton');
+
 // const adultCnt = document.getElementById('adultCnt');
 
 // if (genRoomButton) {
@@ -190,11 +230,7 @@ const joinRoomButton = document.getElementById('joinRoomButton');
 //     };
 // }
 
-if (joinRoomButton) {
-    joinRoomButton.onclick = (e) => {
-        joinRoom();
-    };
-}
+
 
 // if (adultCnt) {
 //     adultCnt.onclick = (e) => {
@@ -202,12 +238,7 @@ if (joinRoomButton) {
 //     };
 // }
 
-document.getElementById('roomName').onkeyup = (e) => {
-    if (e.keyCode === 13) {
-        e.preventDefault();
-        joinRoom();
-    }
-};
+
 
 // function genRoom() {
 //     document.getElementById('roomName').value = getUUID4();
@@ -219,15 +250,8 @@ document.getElementById('roomName').onkeyup = (e) => {
 //     );
 // }
 
-function joinRoom() {
-    const roomName = filterXSS(document.getElementById('roomName').value);
-    if (roomName) {
-        window.location.href = '/join/' + roomName;
-        // window.localStorage.lastRoom = roomName;
-    } else {
-        alert('Room name empty!\nPlease pick a room name.');
-    }
-}
+
+
 
 // function adultContent() {
 //     if (
